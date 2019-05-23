@@ -16,7 +16,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" >
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit">
             Photos
@@ -25,6 +25,6 @@ const NavBar = () => {
       </AppBar>
     </div>
   );
-}
+};
 
 export default NavBar;
