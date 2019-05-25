@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 
 const MeteoriteTable = props => {
-
+  console.log(props.tableData)
 
   return (
     <React.Fragment>

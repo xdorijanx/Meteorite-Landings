@@ -10,28 +10,48 @@ class Layout extends Component {
 
   textInput = React.createRef();
   state = {
-    table: null,
+    tableData: null,
     search: null,
     backup: null,
-    clicked: false,
+    
   };
   componentDidMount() {
-    if(this.state.table=== null) {
+   
       fetch("https://data.nasa.gov/resource/gh4g-9sfh.json/")
       .then(res => res.json())
    
-      .then(res => this.setState({ table: res, backup: res }));
-    }
+      .then(res => this.setState({ tableData: res, backup: res }));
+
     
   }
 
   handleClick = e => {
-    this.setState({
-      clicked: true
-    })
+    if(this.state.search!== '') {
+      this.setState({
+        tableData: this.state.search
+      })
+    }
   };
 
   handleChange = e => {
+
+    if(e.target.value === '') {
+      this.setState({
+        search: this.state.backup
+      })
+    }
+    let table = [];
+    let search = e.target.value.toLocaleLowerCase().charAt(0).toUpperCase() + e.target.value.slice(1);
+    const tableData = [...this.state.tableData];
+    tableData.map((meteor, i) => {
+      if(meteor.name === search) {
+        table.push(meteor)
+        this.setState({
+          search: table
+        })
+      }
+    })
+   /* if(this.state.clicked === false) {
     
     this.state.table.map((meteor, i) => {
       
@@ -40,22 +60,25 @@ class Layout extends Component {
       if(meteor.name === search) {
         table.push(this.state.table[i])
        this.setState({
-         search:table
+         search:table,
+         clicked: false
        })
       } else if(search === '') {
         this.setState({
           table: this.state.backup,
           search: null,
+          clicked: false,
         })
       }
     })  
      
-   
+    
+    */
  
   }
   render() {
     let meteoriteTable;
-
+/*
     if(this.state.table) {
       debugger;
       if(this.state.clicked && this.state.search && this.state.search !== this.state.backup) {
@@ -68,6 +91,13 @@ class Layout extends Component {
       meteoriteTable = <Loading />
     }
 
+    */
+    if(this.state.tableData!== null) {
+      
+      meteoriteTable = <MeteoriteTable tableData = {this.state.tableData} />
+    } else {
+      meteoriteTable = <Loading />
+    }
     
     return (
       <React.Fragment>
