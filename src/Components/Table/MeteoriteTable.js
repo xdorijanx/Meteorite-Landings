@@ -1,5 +1,5 @@
 import React from "react";
-
+import Moment from 'react-moment'
 import {
   withStyles,
   makeStyles,
@@ -45,7 +45,7 @@ const MeteoriteTable = props => {
                 <TableCell align="right">{row.recclass}</TableCell>
                 <TableCell align="right">{row.mass}</TableCell>
                 <TableCell align="right">{row.fall}</TableCell>
-                <TableCell align="right">{row.year}</TableCell>
+                <TableCell align="right"><Moment format="YYYY">{row.year}</Moment></TableCell>
                 <TableCell align="right">{row.reclat}</TableCell>
                 <TableCell align="right">{row.reclong}</TableCell>
               </TableRow>
