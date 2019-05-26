@@ -24,15 +24,14 @@ class Layout extends Component {
   }
 
   handleClick = e => {
+   
     if (this.state.search === "") {
       return null;
     } else {
       this.setState({
         tableData: this.state.search
       });
-      if(this.state.search.length> 1 && this.state.search < 1000) {
-        alert('We couldnt find the specified meteorite, the data you see are meteorites with similar names')
-      }
+    
       
     }
   };
@@ -100,9 +99,11 @@ class Layout extends Component {
   render() {
     const { classes } = this.props;
     let meteoriteTable;
- 
+    
     if (this.state.tableData !== null) {
+      debugger;
       meteoriteTable = <MeteoriteTable tableData={this.state.tableData} />;
+    
     } else {
       meteoriteTable = <Loading />;
     }

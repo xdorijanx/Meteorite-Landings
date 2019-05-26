@@ -16,8 +16,11 @@ import {
 
 const MeteoriteTable = props => {
   console.log(props.tableData)
-
+  if(props.tableData.length > 1 && props.tableData.length < 1000) {
+    alert('We couldnt find the specified meteorite, the data you see are meteorites with similar names')
+  }
   return (
+    
     <React.Fragment>
       <Paper>
         <Table>
@@ -56,6 +59,6 @@ const MeteoriteTable = props => {
     </React.Fragment>
   );
 };
-console.log('i ran')
+
 
 export default MeteoriteTable;
