@@ -19,7 +19,7 @@ const NavBar = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            Photos
+            Meteorite Explorer
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Moment from 'react-moment'
 import {
   withStyles,
   makeStyles,
@@ -16,8 +16,11 @@ import {
 
 const MeteoriteTable = props => {
   console.log(props.tableData)
-
+  if(props.tableData.length > 1 && props.tableData.length < 1000) {
+    alert('We couldnt find the specified meteorite, the data you see are meteorites with similar names')
+  }
   return (
+    
     <React.Fragment>
       <Paper>
         <Table>
@@ -45,7 +48,7 @@ const MeteoriteTable = props => {
                 <TableCell align="right">{row.recclass}</TableCell>
                 <TableCell align="right">{row.mass}</TableCell>
                 <TableCell align="right">{row.fall}</TableCell>
-                <TableCell align="right">{row.year}</TableCell>
+                <TableCell align="right"><Moment format="YYYY">{row.year}</Moment></TableCell>
                 <TableCell align="right">{row.reclat}</TableCell>
                 <TableCell align="right">{row.reclong}</TableCell>
               </TableRow>
@@ -56,6 +59,6 @@ const MeteoriteTable = props => {
     </React.Fragment>
   );
 };
-console.log('i ran')
+
 
 export default MeteoriteTable;
