@@ -11,17 +11,19 @@ import {
   Paper,
   MenuItem,
   TextField,
-  Button
+  Button,
+  Typography
 } from "@material-ui/core";
 
 const MeteoriteTable = props => {
-  console.log(props.tableData)
+
   if(props.tableData.length > 1 && props.tableData.length < 1000) {
-    alert('We couldnt find the specified meteorite, the data you see are meteorites with similar names')
+    
   }
   return (
-    
+   
     <React.Fragment>
+      { props.tableData.length > 1 && props.tableData.length < 1000 ? <Typography variant='subtitle1' gutterBottom>We couldn't find the specified meteorite, the data you see are meteorites with similar names</Typography> : null}
       <Paper>
         <Table>
           <TableHead>
