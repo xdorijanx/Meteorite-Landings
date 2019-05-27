@@ -4,10 +4,20 @@ import NavBar from "../../Components/Navigation/Navbar/Navbar";
 import MeteoriteTable from "../../Components/Table/MeteoriteTable";
 import Loading from "../../Components/Loading/Loading";
 import "./Layout.css";
-import { MenuItem, TextField, Button,  } from "@material-ui/core";
+import { MenuItem, TextField, Button, } from "@material-ui/core";
 import { withStyles } from '@material-ui/styles'
 import capitalize from 'capitalize'
 
+const styles = {
+  form: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'center'
+  },
+  button: {
+    height: 54
+  }
+}
 
 class Layout extends Component {
  
@@ -111,9 +121,9 @@ class Layout extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={e => e.preventDefault()} className={classes.form} >
           <TextField
-          
+            
             id="search"
             label="Enter Meteorite Name"
             type="text"
@@ -126,6 +136,7 @@ class Layout extends Component {
             color="primary"
             type="submit"
             onClick={this.handleClick}
+            className={classes.button}
           >
             Search
           </Button>
@@ -136,4 +147,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default withStyles(styles)(Layout);
